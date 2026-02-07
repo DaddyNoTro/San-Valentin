@@ -1,0 +1,162 @@
+/* === ESTILOS GENERALES === */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f7ede2; /* Fondo crema suave, cálido y neutro */
+    font-family: 'Patrick Hand', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    overflow: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    z-index: 10;
+    transition: opacity 0.5s ease;
+}
+
+/* === EFECTO PAPEL CAFÉ VINTAGE === */
+.paper {
+    background-color: #d8c29b; /* Color papel Kraft un poco más claro */
+    background-image: 
+        linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(0,0,0,0.1) 100%),
+        repeating-linear-gradient(transparent, transparent 29px, rgba(0,0,0,0.03) 30px);
+    padding: 40px 25px;
+    box-shadow: 15px 15px 40px rgba(0,0,0,0.3);
+    transform: rotate(-1deg);
+    border-radius: 2px;
+    position: relative;
+    /* Borde irregular para que parezca cortado a mano */
+    clip-path: polygon(1% 1%, 99% 0%, 100% 99%, 0% 100%, 1% 50%);
+    border: 1px solid #c0a887; /* Borde más sutil */
+}
+
+/* Cinta adhesiva rosa (Washi Tape) más apagada */
+.paper::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(2deg);
+    width: 100px;
+    height: 35px;
+    background-color: rgba(255, 178, 178, 0.6); /* Rosa más pastel */
+    backdrop-filter: blur(1px);
+    border-left: 2px dotted rgba(255,255,255,0.4);
+    border-right: 2px dotted rgba(255,255,255,0.4);
+    z-index: 5;
+}
+
+.title {
+    color: #5a4630; /* Café oscuro */
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 0 0 15px 0;
+    font-family: 'Caveat', cursive;
+}
+
+.text {
+    font-size: 1.4rem;
+    color: #4a3728; /* Café aún más oscuro para el texto */
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.question {
+    color: white;
+    background-color: #ff8c8c; /* Rosa/rojo más suave para la pregunta */
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    transform: rotate(1deg);
+    box-shadow: 4px 4px 0px #e07a7a; /* Sombra más suave */
+    font-size: 1.7rem;
+    margin: 20px 0;
+}
+
+/* === BOTONES === */
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    gap: 15px;
+    min-height: 150px;
+}
+
+button {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.6rem;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 250px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.1s;
+}
+
+#yesBtn {
+    background-color: #ffb2b2; /* Rosa claro para el botón "Sí" */
+    color: #8b4545; /* Color de texto más oscuro para contrastar */
+    box-shadow: 0 5px 0 #e09f9f;
+}
+
+#noBtn {
+    background-color: #c9ad81; /* Mismo color del papel para el "No" */
+    color: #5a4630;
+    border: 1px solid rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+/* === PANTALLA FINAL === */
+#mensaje-final {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: #f7ede2; /* Mismo fondo suave */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.show-final {
+    display: flex !important;
+    opacity: 1 !important;
+}
+
+.final-content h1 {
+    color: #ff8c8c; /* Rosa suave para el título final */
+    font-size: 2.8rem;
+    margin: 0;
+}
+
+.final-content p {
+    font-size: 1.5rem;
+    color: #4a3728; /* Café oscuro para el texto final */
+}
+
+.gif-final {
+    width: 90%;
+    max-width: 300px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* === UTILIDADES === */
+.hidden { display: none !important; }
+
+/* Animación de los corazones cayendo (se inyecta vía JS también pero aquí está por si acaso) */
+@keyframes caida {
+    to { transform: translateY(110vh) rotate(360deg); }
+}
